@@ -4,26 +4,24 @@ import com.exercicio.exercicio_bancario.exceptions.DateException;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
 import java.time.LocalDate;
 
 
 public class Client {
     private long id;
-    @NotEmpty(message = "Nome não pode estar vazio.")
+    @NotEmpty(message = "* Nome não pode estar vazio.")
     private String name;
-    @NotEmpty(message = "Sobrenome não pode estar vazio.")
+    @NotEmpty(message = "* Sobrenome não pode estar vazio.")
     private String lastName;
-    @NotEmpty(message = "E-mail não pode estar vazio.")
-    @Email(message = "E-mail inválido")
+    @NotEmpty(message = "* E-mail não pode estar vazio.")
+    @Email(message = "* E-mail inválido")
     private String email;
-    @NotEmpty(message = "Data não pode estar vazia.")
-    @NotBlank(message = "Data não pode estar vazia.")
+    @Range(min=18, message = "* Idade inferior a 18 anos")
+    private int age;
     private String birthday;
     private DocumentCPF document;
-
-    public Client() {
-    }
 
     public Client(String name, String lastName, String email, String birthday, String cpf) {
         this.name = name;
@@ -70,18 +68,27 @@ public class Client {
         return birthday;
     }
 
-    public final void setBirthday(String birthday) {
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public final void setBirthday(String birthday)  {
         if(birthday != null){
-            if(validadeAge(birthday)){
+            if(validateAge(birthday)){
                 this.birthday = birthday;
             }
         }
     }
 
-    private Boolean validadeAge(String birthday){
+    private Boolean validateAge(String birthday){
         LocalDate today = LocalDate.now();
         int[] data = convetBirthDay(birthday);
 
+        setAge((today.getYear() - data[0]));
         if(today.getYear() - data[0]  > 18)
             return true;
         if(today.getYear() - data[0] == 18){
@@ -102,6 +109,7 @@ public class Client {
         String[] data = birthday.split("-");
         int[] result = new int[3];
         for (int i = 0; i < 3; i++){
+            System.out.println(data[i]);
             result[i] = Integer.parseInt(data[i]);
         }
         return  result;

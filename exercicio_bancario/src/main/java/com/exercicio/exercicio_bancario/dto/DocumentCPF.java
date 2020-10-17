@@ -1,9 +1,11 @@
 package com.exercicio.exercicio_bancario.dto;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
 
 public class DocumentCPF {
-    @CPF(message = "CPF inválido")
+    @NotBlank(message = "* CPF não pode estar vazio")
+    @CPF(message = "* CPF inválido")
     private String cpf;
     private byte[] image;
 

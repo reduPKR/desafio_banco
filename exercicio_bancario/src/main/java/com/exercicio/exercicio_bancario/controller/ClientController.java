@@ -3,16 +3,16 @@ package com.exercicio.exercicio_bancario.controller;
 import com.exercicio.exercicio_bancario.dto.Client;
 import com.exercicio.exercicio_bancario.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Controller
@@ -23,7 +23,6 @@ public class ClientController {
     @GetMapping("/novo")
     public ModelAndView getNewClientPage(){
         final ModelAndView mv = new ModelAndView("newClient");
-        mv.addObject("client",service.getAll());
         return mv;
     }
 
@@ -33,10 +32,12 @@ public class ClientController {
         if(result.hasErrors()){
             mv = new ModelAndView("newClient");
             ArrayList<String> errors = getErrors(result);
+            mv.setStatus(HttpStatus.BAD_REQUEST);
             mv.addObject("errors", errors);
         }else{
-            service.add(client)
-            mv = new ModelAndView("newClient");
+            service.add(client);
+            mv = new ModelAndView("/");
+            mv.setStatus(HttpStatus.OK);
         }
         return mv;
     }
@@ -49,4 +50,6 @@ public class ClientController {
         }
         return errors;
     }
+
+
 }
