@@ -1,6 +1,8 @@
 package com.exercicio.exercicio_bancario.controller;
 
 import com.exercicio.exercicio_bancario.dto.Client;
+import com.exercicio.exercicio_bancario.service.ClientService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -12,14 +14,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("cliente")
 public class ClientController {
+    @Autowired ClientService service;
+
     @GetMapping("/novo")
     public ModelAndView getNewClientPage(){
         final ModelAndView mv = new ModelAndView("newClient");
+        mv.addObject("client",service.getAll());
         return mv;
     }
 
@@ -31,7 +35,7 @@ public class ClientController {
             ArrayList<String> errors = getErrors(result);
             mv.addObject("errors", errors);
         }else{
-            //Adicionar service
+            service.add(client)
             mv = new ModelAndView("newClient");
         }
         return mv;
