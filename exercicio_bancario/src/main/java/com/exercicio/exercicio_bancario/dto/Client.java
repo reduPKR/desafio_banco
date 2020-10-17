@@ -22,6 +22,9 @@ public class Client {
     private String birthday;
     private DocumentCPF document;
 
+    public Client() {
+    }
+
     public Client(String name, String lastName, String email, String birthday, String cpf) {
         this.name = name;
         this.lastName = lastName;

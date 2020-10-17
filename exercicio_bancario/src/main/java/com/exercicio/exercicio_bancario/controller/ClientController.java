@@ -12,19 +12,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("cliente")
 public class ClientController {
     @GetMapping("/novo")
     public ModelAndView getNewClientPage(){
-        ModelAndView mv = new ModelAndView("newClient");
+        final ModelAndView mv = new ModelAndView("newClient");
         return mv;
     }
 
     @PostMapping("/novo")
     public ModelAndView create(@Valid @ModelAttribute Client client, BindingResult result){
-        ModelAndView mv;
+        final ModelAndView mv;
         if(result.hasErrors()){
             mv = new ModelAndView("newClient");
             ArrayList<String> errors = getErrors(result);
