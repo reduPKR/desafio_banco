@@ -11,6 +11,12 @@
             <p>
                 Para avançar é preciso de uma foto do CPF: <label th:text="*{client.document.cpf}"></label>
             </p>
+            <form action="/cliente/upload" method="post">
+                <label>Foto</label>
+                <input type="file" name="photo" placeholder="Upload de imagem">
+                <br>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
             <br>
         </div>
     </body>
