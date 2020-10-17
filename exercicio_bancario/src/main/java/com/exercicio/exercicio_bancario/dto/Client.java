@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 
 
@@ -21,6 +22,7 @@ public class Client {
     @Range(min=18, message = "* Idade inferior a 18 anos")
     private int age;
     private String birthday;
+    @Valid
     private DocumentCPF document;
 
     public Client(String name, String lastName, String email, String birthday, String cpf) {
@@ -109,7 +111,6 @@ public class Client {
         String[] data = birthday.split("-");
         int[] result = new int[3];
         for (int i = 0; i < 3; i++){
-            System.out.println(data[i]);
             result[i] = Integer.parseInt(data[i]);
         }
         return  result;

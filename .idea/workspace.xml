@@ -24,10 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0e23f0cb-12ff-406d-b6ca-c6c25dc4dbad" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/controller/ClientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/dto/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/dto/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/dto/DocumentCPF.java" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/dto/DocumentCPF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/resources/templates/newClient.html" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/resources/templates/newClient.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,22 +97,22 @@
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="525" y="146" key="#com.intellij.ide.util.MemberChooser/0.0.1440.860@0.0.1440.860" timestamp="1602958637042" />
-    <state width="1397" height="187" key="GridCell.Tab.0.bottom" timestamp="1602958643642">
+    <state width="1397" height="187" key="GridCell.Tab.0.bottom" timestamp="1602959235205">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="187" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1602958643642" />
-    <state width="1397" height="187" key="GridCell.Tab.0.center" timestamp="1602958643642">
+    <state width="1397" height="187" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1602959235205" />
+    <state width="1397" height="187" key="GridCell.Tab.0.center" timestamp="1602959235205">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="187" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1602958643642" />
-    <state width="1397" height="187" key="GridCell.Tab.0.left" timestamp="1602958643642">
+    <state width="1397" height="187" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1602959235205" />
+    <state width="1397" height="187" key="GridCell.Tab.0.left" timestamp="1602959235205">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="187" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1602958643642" />
-    <state width="1397" height="187" key="GridCell.Tab.0.right" timestamp="1602958643642">
+    <state width="1397" height="187" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1602959235205" />
+    <state width="1397" height="187" key="GridCell.Tab.0.right" timestamp="1602959235205">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="187" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1602958643642" />
+    <state width="1397" height="187" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1602959235205" />
     <state width="1397" height="276" key="GridCell.Tab.1.bottom" timestamp="1602916690247">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
@@ -136,10 +133,10 @@
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="537" y="344" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.860@0.0.1440.860" timestamp="1602958437593" />
-    <state x="427" y="29" width="585" height="801" key="find.popup" timestamp="1602957006903">
+    <state x="427" y="29" width="585" height="801" key="find.popup" timestamp="1602959262592">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="427" y="29" width="585" height="801" key="find.popup/0.0.1440.860@0.0.1440.860" timestamp="1602957006903" />
+    <state x="427" y="29" width="585" height="801" key="find.popup/0.0.1440.860@0.0.1440.860" timestamp="1602959262592" />
     <state x="376" y="195" width="672" height="677" key="run.anything.popup" timestamp="1602946016339">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
