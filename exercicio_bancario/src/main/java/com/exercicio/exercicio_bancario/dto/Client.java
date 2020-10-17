@@ -1,17 +1,25 @@
 package com.exercicio.exercicio_bancario.dto;
 
 import com.exercicio.exercicio_bancario.exceptions.DateException;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+
 
 public class Client {
     private long id;
+    @NotEmpty(message = "Nome não pode estar vazio.")
     private String name;
+    @NotEmpty(message = "Sobrenome não pode estar vazio.")
     private String lastName;
+    @NotEmpty(message = "E-mail não pode estar vazio.")
+    @Email(message = "E-mail inválido")
     private String email;
-    private Date birthday;
+    @NotEmpty(message = "Data não pode estar vazia.")
+    @NotBlank(message = "Data não pode estar vazia.")
+    private String birthday;
     private DocumentCPF document;
 
     public Client(String name, String lastName, String email, String birthday, String cpf) {
@@ -55,25 +63,45 @@ public class Client {
         this.email = email;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
     public final void setBirthday(String birthday) {
         if(birthday != null){
-            try{
-                trySetBirthday(birthday);
-            }catch(DateException e){
-                System.out.println(e.getMessage());
-            } catch (ParseException e) {
-                e.printStackTrace();
+            if(validadeAge(birthday)){
+                this.birthday = birthday;
             }
         }
     }
 
-    private void trySetBirthday(String birthday) throws DateException, ParseException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        this.birthday = formatter.parse(birthday);
+    private Boolean validadeAge(String birthday){
+        LocalDate today = LocalDate.now();
+        int[] data = convetBirthDay(birthday);
+
+        if(today.getYear() - data[0]  > 18)
+            return true;
+        if(today.getYear() - data[0] == 18){
+            if(data[1] < today.getMonth().getValue()){
+                return true;
+            }
+            if(data[1] == today.getMonth().getValue()){
+                if(data[2] <= today.getDayOfMonth()){
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private int[] convetBirthDay(String birthday){
+        String[] data = birthday.split("-");
+        int[] result = new int[3];
+        for (int i = 0; i < 3; i++){
+            result[i] = Integer.parseInt(data[i]);
+        }
+        return  result;
     }
 
     public DocumentCPF getDocument() {
