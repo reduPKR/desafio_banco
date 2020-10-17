@@ -36,7 +36,7 @@ public class ClientController {
             mv.addObject("errors", errors);
         }else{
             service.add(client);
-            mv = new ModelAndView("/");
+            mv = new ModelAndView("uploadDocument");
             mv.setStatus(HttpStatus.OK);
         }
         return mv;
