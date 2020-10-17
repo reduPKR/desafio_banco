@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Tela inicial</title>
+    </head>
+    <body>
+        <div style="text-align: center">
+            <h1>Novo cliente</h1>
+            <br>
+            <form th:object="${client}" method="post">
+                <input type="text" name="name"  th:placeholder="Nome"/>
+                <br><br>
+                <input type="text" name="lastName" th:placeholder="Sobrenome"/>
+                <br><br>
+                <input type="email" name="email" th:placeholder="E-mail"/>
+                <br><br>
+                <input type="text" name="cpf" onKeyPress="maskCPF(cpf);" maxlength="14" th:placeholder="CPF"/>
+                <br><br>
+                <input type="date" name="birthday" th:placeholder="Data"/>
+                <br><br>
+                <button type="submit">Confirmar</button>
+            </form>
+            <br>
+        </div>
+    <a th:href="@{/}">voltar</a>
+    <br>
+    </body>
+</html>
+
+<script>
+    function maskCPF(cpf){
+        mask = '000.000.000-00';
+
+        var flagMask;
+        var digit = event.keyCode;
+        numbers = cpf.value.toString().replace( /\-|\.|\/|\(|\)| /g, "" );
+
+        var pos = 0;
+        var newValue="";
+        if (digit != 8) {
+                for(i=0; i<= 14; i++) {
+                        flagMask  = ((mask.charAt(i) == "-") || (mask.charAt(i) == "."));
+
+                        if (flagMask) {
+                                newValue += mask.charAt(i);
+                                numbers.length++;
+                        }else {
+                                newValue += numbers.charAt(pos);
+                                pos++;
+                        }
+                }
+
+               cpf.value = newValue;
+               return true;
+        }else {
+            return true;
+        }
+    }
+</script>
