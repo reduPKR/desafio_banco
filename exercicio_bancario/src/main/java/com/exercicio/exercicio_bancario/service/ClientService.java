@@ -38,7 +38,7 @@ public class ClientService {
         if(client.isPresent()){
             return client.get();
         }
-        throw new ClientException();
+        return null;
     }
 
     public Client add(Client client){

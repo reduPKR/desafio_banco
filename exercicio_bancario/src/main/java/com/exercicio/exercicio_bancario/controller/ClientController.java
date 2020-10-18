@@ -25,9 +25,31 @@ import java.util.Map;
 public class ClientController {
     @Autowired ClientService service;
 
+    @GetMapping("")
+    public ModelAndView getRegisterControl(){
+        return new ModelAndView("registrationControl");
+    }
+
     @GetMapping("/novo")
     public ModelAndView getNewClientPage(){
-        final ModelAndView mv = new ModelAndView("newClient");
+        return new ModelAndView("newClient");
+    }
+
+    @PostMapping("/busca")
+    public ModelAndView getClientByCpf(@ModelAttribute DocumentCPF document){
+        System.out.println(document.getCpf());
+        Client client = service.getByCPF(document.getCpf());
+        System.out.println(client);
+        final ModelAndView mv;
+        if(client != null){
+            mv = new ModelAndView("registrationSteps");
+            mv.addObject("client",client);
+            mv.setStatus(HttpStatus.OK);
+        }else{
+            BindingResult result = new BeanPropertyBindingResult("Busca", "Cliente");
+            result.addError(new FieldError("Client", "CPF", "* Nenhum um cliente encontrado com esse CPF"));
+            mv = errorHandling(result, "registrationControl");
+        }
         return mv;
     }
 
@@ -38,9 +60,7 @@ public class ClientController {
             mv = errorHandling(result, "newClient");
         }else{
             if(service.add(client) != null){
-                mv = new ModelAndView("addressRegister");
-                mv.addObject("client", client);
-                mv.addObject("url", getUrlAddress(client.getDocument().getCpf()));
+                mv = new ModelAndView("registrationSteps");
                 mv.setStatus(HttpStatus.OK);
             }else{
                 result.addError(new FieldError("Documento", "CPF", "* CPF já esta sendo utilizado"));

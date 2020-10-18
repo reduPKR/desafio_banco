@@ -2,32 +2,22 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
-        <title>Tela inicial</title>
+        <title>Buscar por CPF</title>
     </head>
     <body>
         <div style="text-align: center">
-            <h1>Novo cliente</h1>
-            <br><br>
-            <form th:object="${client}" method="post">
+            <h1>Etapas de cadastro</h1>
+            <br> <br>
+            <form th:action="@{/cliente/busca}" @object="document" method="post">
                 <div th:each="erro: ${errors}">
                     <span style="color: red;" th:text="${erro}" ></span>
                 </div>
-                <input type="text" name="name"  th:placeholder="Nome"/>
-                <br><br>
-                <input type="text" name="lastName" th:placeholder="Sobrenome"/>
-                <br><br>
-                <input type="email" name="email" th:placeholder="E-mail"/>
-                <br><br>
+                <br>
                 <input type="text" name="cpf" onKeyPress="maskCPF(cpf);" maxlength="14" th:placeholder="CPF"/>
-                <br><br>
-                <input type="date" name="birthday" th:placeholder="Data"/>
-                <br><br>
-                <button type="submit">Confirmar</button>
+                <button type="submit">Buscar</button>
             </form>
-            <br>
         </div>
-    <a th:href="@{/cliente}">voltar</a>
-    <br>
+        <a th:href="@{/}">voltar</a>
     </body>
 </html>
 
