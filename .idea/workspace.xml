@@ -25,8 +25,7 @@
     <list default="true" id="0e23f0cb-12ff-406d-b6ca-c6c25dc4dbad" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/service/ClientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/resources/templates/addressRegister.html" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/resources/templates/addressRegister.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/resources/templates/viewDocument.html" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/resources/templates/viewInformation.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,22 +103,22 @@
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="525" y="146" key="#com.intellij.ide.util.MemberChooser/0.0.1440.860@0.0.1440.860" timestamp="1603034370852" />
-    <state width="1397" height="250" key="GridCell.Tab.0.bottom" timestamp="1603042114124">
+    <state width="1397" height="250" key="GridCell.Tab.0.bottom" timestamp="1603042588145">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="250" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603042114124" />
-    <state width="1397" height="250" key="GridCell.Tab.0.center" timestamp="1603042114124">
+    <state width="1397" height="250" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603042588145" />
+    <state width="1397" height="250" key="GridCell.Tab.0.center" timestamp="1603042588145">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="250" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1603042114124" />
-    <state width="1397" height="250" key="GridCell.Tab.0.left" timestamp="1603042114124">
+    <state width="1397" height="250" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1603042588145" />
+    <state width="1397" height="250" key="GridCell.Tab.0.left" timestamp="1603042588145">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="250" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1603042114124" />
-    <state width="1397" height="250" key="GridCell.Tab.0.right" timestamp="1603042114124">
+    <state width="1397" height="250" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1603042588145" />
+    <state width="1397" height="250" key="GridCell.Tab.0.right" timestamp="1603042588145">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="250" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1603042114124" />
+    <state width="1397" height="250" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1603042588145" />
     <state width="1397" height="276" key="GridCell.Tab.1.bottom" timestamp="1602916690247">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
@@ -148,16 +147,5 @@
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="376" y="195" width="672" height="677" key="run.anything.popup/0.0.1440.860@0.0.1440.860" timestamp="1603031147804" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/controller/ClientController.java</url>
-          <line>93</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

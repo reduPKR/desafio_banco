@@ -97,7 +97,7 @@ public class ClientController {
         if(client != null){
             service.mountImage(client.getDocument().getImage(), client.getDocument().getExtension());
 
-            mv = new ModelAndView("viewDocument");
+            mv = new ModelAndView("viewInformation");
             mv.addObject("client",client);
             mv.addObject("image",getImagePath(client.getDocument().getExtension()));
             mv.setStatus(HttpStatus.OK);

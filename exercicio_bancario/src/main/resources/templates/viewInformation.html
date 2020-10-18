@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Upload de documento</title>
+    </head>
+    <body>
+        <div style="text-align: center">
+            <h1>Visualização</h1>
+            <br>
+            <div>
+                <strong>Nome:</strong>
+                <label th:text="*{client.name}"></label>
+                <strong>Sobenome:</strong>
+                <label th:text="*{client.lastName}"></label>
+                <br>
+                <strong>E-mail:</strong>
+                <label th:text="*{client.email}"></label>
+            </div>
+            <br>
+            <div>
+                <strong>Foto digitalizada para o CPF:</strong>
+                <label th:text="*{client.document.cpf}"></label>
+                <br><br>
+                <img th:src="*{image}" width="500" height="299">
+            </div>
+        </div>
+    </body>
+</html>
