@@ -37,7 +37,8 @@ public class ClientController {
             mv = errorHandling(result, "newClient");
         }else{
             if(service.add(client) != null){
-                mv = new ModelAndView("uploadDocument");
+                mv = new ModelAndView("addressRegister");
+                mv.addObject("client", client);
                 mv.setStatus(HttpStatus.OK);
             }else{
                 result.addError(new FieldError("Documento", "CPF", "* CPF já esta sendo utilizado"));

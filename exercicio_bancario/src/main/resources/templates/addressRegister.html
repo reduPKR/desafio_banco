@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Upload de documento</title>
+    </head>
+    <body>
+        <div style="text-align: center">
+            <h1>Registrar endereço</h1>
+            <br>
+            <strong>Nome:</strong>
+            <label th:text="*{client.name}"></label>
+            <strong>Sobrenome:</strong>
+            <label th:text="*{client.lastName}"></label>
+            <br>
+            <strong>CPF:</strong>
+            <label th:text="*{client.document.cpf}"></label>
+            <br><br>
+            <form th:object="${address}" method="post">
+                <div th:each="erro: ${errors}">
+                    <span style="color: red;" th:text="${erro}" ></span>
+                </div>
+                <input type="text" name="zip" onKeyPress="maskZIP(zip);" maxlength="14"  th:placeholder="CEP"/>
+                <br><br>
+                <input type="text" name="state" th:placeholder="UF"/>
+                <br><br>
+                <input type="text" name="city" th:placeholder="Cidade"/>
+                <br><br>
+                <input type="text" name="district" th:placeholder="Bairro"/>
+                <br><br>
+                <input type="text" name="street" th:placeholder="Rua"/>
+                <br><br>
+                <input type="text" name="complement" th:placeholder="Complemento"/>
+                <br><br>
+                <button type="submit">Confirmar</button>
+            </form>
+        </div>
+    </body>
+</html>

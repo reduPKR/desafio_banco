@@ -124,4 +124,12 @@ public class Client {
     public void setDocument(DocumentCPF document) {
         this.document = document;
     }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 }
