@@ -64,8 +64,11 @@ public class ClientController {
     }
 
     @PostMapping("/upload")
-    public String upload(@RequestParam("image") MultipartFile image){
-        service.saveImage(image);
-        return "home";
+    public ModelAndView upload(@RequestParam("image") MultipartFile image, @RequestParam("cpf") String cpf){
+        service.saveImage(image, cpf);
+
+        final ModelAndView mv = new ModelAndView("viewDocument");
+        mv.setStatus(HttpStatus.OK);
+        return mv;
     }
 }

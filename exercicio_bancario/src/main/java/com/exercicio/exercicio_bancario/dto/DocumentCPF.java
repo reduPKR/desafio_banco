@@ -20,4 +20,12 @@ public class DocumentCPF {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
 }

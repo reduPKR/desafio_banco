@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.constraints.Null;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -44,18 +43,20 @@ public class ClientService {
         return true;
     }
 
-    public void saveImage(MultipartFile image) {
+    public void saveImage(MultipartFile image, String cpf) {
         try {
-            trySaveImage(image);
+            trySaveImage(image, cpf);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-    private void trySaveImage(MultipartFile image) throws IOException {
-        String folder = "/images/";
-        byte[] bytes = image.getBytes();
-
+    private void trySaveImage(MultipartFile image, String cpf) throws IOException {
+        Optional<DocumentCPF> document = repository.getByCPF(cpf);
+        if(document.isPresent()){
+            byte[] bytes = image.getBytes();
+            document.get().setImage(bytes);
+        }
     }
 }
