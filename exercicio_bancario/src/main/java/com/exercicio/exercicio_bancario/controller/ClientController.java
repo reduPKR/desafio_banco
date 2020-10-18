@@ -74,13 +74,17 @@ public class ClientController {
 
             mv = new ModelAndView("viewDocument");
             mv.addObject("client",client);
+            mv.addObject("image",getImagePath(client.getDocument().getExtension()));
             mv.setStatus(HttpStatus.OK);
         }else{
             BindingResult result = new BeanPropertyBindingResult("Documento", "Imagem");
             result.addError(new FieldError("Documento", "CPF", "* CPF erro ao salvar a foto"));
             mv = errorHandling(result, "uploadDocument");
         }
-
         return mv;
+    }
+
+    private String getImagePath(String extension){
+        return service.getBasePathImage()+"\\cpf."+extension;
     }
 }

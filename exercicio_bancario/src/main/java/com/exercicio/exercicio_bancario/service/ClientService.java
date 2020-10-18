@@ -89,21 +89,33 @@ public class ClientService {
     }
 
     private void tryMountImage(byte[] bytes, String extension) throws IOException {
-        String pathToFile = System.getProperty("user.dir")+"\\src\\main\\resources\\document";
-
-        remover(new File(pathToFile));
+        String pathToFile = getBasePathImage();
+        rebootDirectory(new File(pathToFile));
 
         Path path = Paths.get(pathToFile+"\\cpf."+extension);
         Files.write(path, bytes);
     }
 
-    private void remover (File f) {
-        if (f.isDirectory()) {
-            File[] files = f.listFiles();
+    private void rebootDirectory (File file) {
+        removeDirectory(file);
+        createDirectory(file);
+    }
+
+    private void removeDirectory(File file){
+        if (file.isDirectory()) {
+            File[] files = file.listFiles();
             for (int i = 0; i < files.length; ++i) {
-                remover (files[i]);
+                removeDirectory(files[i]);
             }
         }
-        f.delete();
+        file.delete();
+    }
+
+    private void createDirectory(File file){
+        file.mkdirs();
+    }
+
+    public String getBasePathImage(){
+        return System.getProperty("user.dir")+"\\src\\main\\resources\\static\\document";
     }
 }
