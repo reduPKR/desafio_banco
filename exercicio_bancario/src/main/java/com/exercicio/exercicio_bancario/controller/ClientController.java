@@ -38,7 +38,6 @@ public class ClientController {
             mv = errorHandling(result, "newClient");
         }else{
             if(service.add(client) != null){
-                System.out.println(client.getName());
                 mv = new ModelAndView("addressRegister");
                 mv.addObject("client", client);
                 mv.addObject("url", getUrlAddress(client.getDocument().getCpf()));

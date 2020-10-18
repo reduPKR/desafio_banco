@@ -9,6 +9,7 @@
             <h1>Visualização</h1>
             <br>
             <div>
+                <h3>Dados pessoais</h3>
                 <strong>Nome:</strong>
                 <label th:text="*{client.name}"></label>
                 <strong>Sobenome:</strong>
@@ -16,13 +17,41 @@
                 <br>
                 <strong>E-mail:</strong>
                 <label th:text="*{client.email}"></label>
+                <br>
+                <strong>Data de nascimento:</strong>
+                <label th:text="*{client.birthday}"></label>
             </div>
             <br>
             <div>
+                <h3>Endereço</h3>
+                <strong>CEP:</strong>
+                <label th:text="*{client.address.zip}"></label>
+                <br>
+                <strong>Estado:</strong>
+                <label th:text="*{client.address.state}"></label>
+                <br>
+                <strong>Cidade:</strong>
+                <label th:text="*{client.address.city}"></label>
+                <br>
+                <strong>Bairro:</strong>
+                <label th:text="*{client.address.district}"></label>
+                <br>
+                <strong>Rua:</strong>
+                <label th:text="*{client.address.street}"></label>
+                <br>
+                <strong>Complemento:</strong>
+                <label th:text="*{client.address.complement}"></label>
+            </div>
+            <br>
+            <div>
+                <h3>Documentos</h3>
                 <strong>Foto digitalizada para o CPF:</strong>
                 <label th:text="*{client.document.cpf}"></label>
                 <br><br>
-                <img th:src="*{image}" width="500" height="299">
+                <img th:src="*{image}" width="400" height="237">
+            </div>
+            <div style="position: absolute; right: 500px;">
+                <a type="button" href="/cliente/finalizar">Confirmar</a>
             </div>
         </div>
     </body>
