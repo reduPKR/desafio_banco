@@ -12,10 +12,13 @@
                 Para avançar é preciso de uma foto do CPF: <label th:text="*{client.document.cpf}"></label>
             </p>
             <form th:action="@{/cliente/upload}" enctype="multipart/form-data" method="post">
+                <div th:each="erro: ${errors}">
+                    <span style="color: red;" th:text="${erro}" ></span>
+                </div>
                 <label>Foto</label>
                 <input type="text" name="cpf" th:value="${client.document.cpf}" hidden>
                 <input type="file" name="image" placeholder="Upload de imagem">
-                <br>
+                <br><br>
                 <button type="submit" class="btn btn-primary">Salvar</button>
             </form>
             <br>

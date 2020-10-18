@@ -8,6 +8,7 @@ public class DocumentCPF {
     @CPF(message = "* CPF inválido")
     private String cpf;
     private byte[] image;
+    private String extension;
 
     public DocumentCPF(String cpf) {
         this.cpf = cpf;
@@ -27,5 +28,13 @@ public class DocumentCPF {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public String getExtension() {
+        return extension;
+    }
+
+    public void setExtension(String extension) {
+        this.extension = extension;
     }
 }

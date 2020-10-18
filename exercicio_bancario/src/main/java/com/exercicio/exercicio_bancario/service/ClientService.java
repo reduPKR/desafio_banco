@@ -1,14 +1,17 @@
 package com.exercicio.exercicio_bancario.service;
 
 import com.exercicio.exercicio_bancario.dto.Client;
-import com.exercicio.exercicio_bancario.dto.DocumentCPF;
 import com.exercicio.exercicio_bancario.exceptions.ClientException;
 import com.exercicio.exercicio_bancario.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -29,6 +32,14 @@ public class ClientService {
         throw new ClientException();
     }
 
+    public Client getByCPF(String cpf){
+        final Optional<Client> client = repository.getByCPF(cpf);
+        if(client.isPresent()){
+            return client.get();
+        }
+        throw new ClientException();
+    }
+
     public Client add(Client client){
         if(uniqueCPF(client.getDocument().getCpf())){
             return repository.add(client);
@@ -37,26 +48,62 @@ public class ClientService {
     }
 
     private Boolean uniqueCPF(String cpf){
-        Optional<DocumentCPF> document = repository.getByCPF(cpf);
-        if(document.isPresent())
+        Optional<Client> client = repository.getByCPF(cpf);
+        if(client.isPresent())
             return false;
         return true;
     }
 
-    public void saveImage(MultipartFile image, String cpf) {
+    public Client saveImage(MultipartFile image, String cpf) {
         try {
-            trySaveImage(image, cpf);
+            return trySaveImage(image, cpf);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        return null;
     }
 
-    private void trySaveImage(MultipartFile image, String cpf) throws IOException {
-        Optional<DocumentCPF> document = repository.getByCPF(cpf);
-        if(document.isPresent()){
+    private Client trySaveImage(MultipartFile image, String cpf) throws IOException {
+        Optional<Client> client = repository.getByCPF(cpf);
+        if(client.isPresent()){
             byte[] bytes = image.getBytes();
-            document.get().setImage(bytes);
+            client.get().getDocument().setImage(bytes);
+            setExtension(client.get(), image);
+            return client.get();
         }
+        return null;
+    }
+
+    private void setExtension(Client client, MultipartFile image){
+        String imageAux = image.getOriginalFilename();
+        String[] extension = imageAux.split("\\.");
+        client.getDocument().setExtension(extension[(extension.length-1)]);
+    }
+
+    public void mountImage(byte[] bytes, String extension){
+        try {
+            tryMountImage(bytes, extension);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void tryMountImage(byte[] bytes, String extension) throws IOException {
+        String pathToFile = System.getProperty("user.dir")+"\\src\\main\\resources\\document";
+
+        remover(new File(pathToFile));
+
+        Path path = Paths.get(pathToFile+"\\cpf."+extension);
+        Files.write(path, bytes);
+    }
+
+    private void remover (File f) {
+        if (f.isDirectory()) {
+            File[] files = f.listFiles();
+            for (int i = 0; i < files.length; ++i) {
+                remover (files[i]);
+            }
+        }
+        f.delete();
     }
 }

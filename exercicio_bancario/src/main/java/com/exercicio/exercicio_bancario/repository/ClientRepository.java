@@ -25,14 +25,8 @@ public class ClientRepository {
         return listClients.stream().filter(item -> item.getId() == id).findFirst();
     }
 
-    public Optional<DocumentCPF> getByCPF(String cpf){
-        DocumentCPF document = null;
-        for ( Client client: listClients ) {
-            if(client.getDocument().getCpf().equals(cpf)){
-                document = client.getDocument();
-            }
-        }
-        return Optional.ofNullable(document);
+    public Optional<Client> getByCPF(String cpf){
+        return listClients.stream().filter(item -> item.getDocument().getCpf().equals(cpf)).findFirst();
     }
 
     public Client add(Client client){
