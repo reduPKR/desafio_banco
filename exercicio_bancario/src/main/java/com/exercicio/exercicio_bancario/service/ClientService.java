@@ -1,5 +1,6 @@
 package com.exercicio.exercicio_bancario.service;
 
+import com.exercicio.exercicio_bancario.dto.Address;
 import com.exercicio.exercicio_bancario.dto.Client;
 import com.exercicio.exercicio_bancario.exceptions.ClientException;
 import com.exercicio.exercicio_bancario.repository.ClientRepository;
@@ -117,5 +118,14 @@ public class ClientService {
 
     public String getBasePathImage(){
         return System.getProperty("user.dir")+"\\src\\main\\resources\\static\\image";
+    }
+
+    public boolean addAddress(Address address, String cpf) {
+        Optional<Client> client = repository.getByCPF(cpf);
+        if(client.isPresent()){
+            client.get().setAddress(address);
+            return true;
+        }
+        return false;
     }
 }

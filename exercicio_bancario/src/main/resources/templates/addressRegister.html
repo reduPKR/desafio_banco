@@ -16,7 +16,7 @@
             <strong>CPF:</strong>
             <label th:text="*{client.document.cpf}"></label>
             <br><br>
-            <form th:object="${address}" method="post">
+            <form th:action="${url}" th:object="${address}" method="post">
                 <div th:each="erro: ${errors}">
                     <span style="color: red;" th:text="${erro}" ></span>
                 </div>
@@ -37,3 +37,34 @@
         </div>
     </body>
 </html>
+
+<script>
+    function maskZIP(zip){
+        mask = '00000-000';
+
+        var flagMask;
+        var digit = event.keyCode;
+        numbers = zip.value.toString().replace( /\-|\.|\/|\(|\)| /g, "" );
+
+        var pos = 0;
+        var newValue="";
+        if (digit != 8) {
+                for(i=0; i<= 9; i++) {
+                        flagMask  = ((mask.charAt(i) == "-") || (mask.charAt(i) == "."));
+
+                        if (flagMask) {
+                                newValue += mask.charAt(i);
+                                numbers.length++;
+                        }else {
+                                newValue += numbers.charAt(pos);
+                                pos++;
+                        }
+                }
+
+               zip.value = newValue;
+               return true;
+        }else {
+            return true;
+        }
+    }
+</script>

@@ -1,5 +1,6 @@
 package com.exercicio.exercicio_bancario.controller;
 
+import com.exercicio.exercicio_bancario.dto.Address;
 import com.exercicio.exercicio_bancario.dto.Client;
 import com.exercicio.exercicio_bancario.dto.DocumentCPF;
 import com.exercicio.exercicio_bancario.service.ClientService;
@@ -37,8 +38,10 @@ public class ClientController {
             mv = errorHandling(result, "newClient");
         }else{
             if(service.add(client) != null){
+                System.out.println(client.getName());
                 mv = new ModelAndView("addressRegister");
                 mv.addObject("client", client);
+                mv.addObject("url", getUrlAddress(client.getDocument().getCpf()));
                 mv.setStatus(HttpStatus.OK);
             }else{
                 result.addError(new FieldError("Documento", "CPF", "* CPF já esta sendo utilizado"));
@@ -65,6 +68,27 @@ public class ClientController {
         return errors;
     }
 
+    @PostMapping("/endereco/{cpf}")
+    public ModelAndView address(@Valid @ModelAttribute Address address, @PathVariable("cpf") String cpf, BindingResult result){
+       final ModelAndView mv;
+
+        if(result.hasErrors()){
+            mv = errorHandling(result, "addressRegister");
+            mv.addObject("url", getUrlAddress(cpf));
+        }else{
+            if(service.addAddress(address,cpf)){
+                mv = new ModelAndView("uploadDocument");
+                mv.setStatus(HttpStatus.OK);
+            }else{
+                result.addError(new FieldError("Endereço", "Cliente", "* Cliente não encontrado"));
+                mv = errorHandling(result, "addressRegister");
+            }
+        }
+
+        mv.addObject("client", service.getByCPF(cpf));
+        return mv;
+    }
+
     @PostMapping("/upload")
     public ModelAndView upload(@RequestParam("image") MultipartFile image, @RequestParam("cpf") String cpf){
         Client client = service.saveImage(image, cpf);
@@ -87,5 +111,9 @@ public class ClientController {
 
     private String getImagePath(String extension){
         return "/image/cpf."+extension;
+    }
+
+    private String getUrlAddress(String cpf){
+        return "/cliente/endereco/"+cpf;
     }
 }
