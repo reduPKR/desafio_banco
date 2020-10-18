@@ -7,8 +7,24 @@
     <body>
     <div style="text-align: center">
         <h1>Etapas de cadastro</h1>
+        <br>
+        <strong>Nome:</strong>
+        <label th:text="*{client.name}"></label>
+        <strong>Sobrenome:</strong>
+        <label th:text="*{client.lastName}"></label>
+        <br>
+        <strong>CPF:</strong>
+        <label th:text="*{client.document.cpf}"></label>
         <br><br>
-        
+        <form  th:action="@{/cliente/endereco}" @object="document" method="get">
+            <input type="text" name="cpf" th:value="${client.document.cpf}" hidden>
+            <button type="submit">Cadastrar endereço</button>
+        </form>
+        <br>
+        <a th:href="*{urlAddress}">Upload foto do CPF</a>
+        <br>
+        <a th:href="*{urlAddress}">Visualizar dados cadastrados</a>
+        <br>
     </div>
     <a th:href="@{/cliente}">voltar</a>
     </body>

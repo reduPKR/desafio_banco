@@ -37,14 +37,10 @@ public class ClientController {
 
     @PostMapping("/busca")
     public ModelAndView getClientByCpf(@ModelAttribute DocumentCPF document){
-        System.out.println(document.getCpf());
         Client client = service.getByCPF(document.getCpf());
-        System.out.println(client);
         final ModelAndView mv;
         if(client != null){
-            mv = new ModelAndView("registrationSteps");
-            mv.addObject("client",client);
-            mv.setStatus(HttpStatus.OK);
+            mv = redirectRegistrationSteps(client);
         }else{
             BindingResult result = new BeanPropertyBindingResult("Busca", "Cliente");
             result.addError(new FieldError("Client", "CPF", "* Nenhum um cliente encontrado com esse CPF"));
@@ -60,8 +56,7 @@ public class ClientController {
             mv = errorHandling(result, "newClient");
         }else{
             if(service.add(client) != null){
-                mv = new ModelAndView("registrationSteps");
-                mv.setStatus(HttpStatus.OK);
+                mv = redirectRegistrationSteps(client);
             }else{
                 result.addError(new FieldError("Documento", "CPF", "* CPF já esta sendo utilizado"));
                 mv = errorHandling(result, "newClient");
@@ -87,24 +82,31 @@ public class ClientController {
         return errors;
     }
 
+    @GetMapping("/endereco")
+    public ModelAndView getAddressPage(@ModelAttribute DocumentCPF document){
+        ModelAndView mv = new ModelAndView("addressRegister");
+        mv.addObject("client", service.getByCPF(document.getCpf()));
+        mv.addObject("url", "/cliente/endereco/"+document.getCpf());
+        return  mv;
+    }
+
     @PostMapping("/endereco/{cpf}")
     public ModelAndView address(@Valid @ModelAttribute Address address, @PathVariable("cpf") String cpf, BindingResult result){
-       final ModelAndView mv;
-
+        final ModelAndView mv;
         if(result.hasErrors()){
             mv = errorHandling(result, "addressRegister");
-            mv.addObject("url", getUrlAddress(cpf));
+            mv.addObject("url", "/cliente/endereco/"+cpf);
+            mv.addObject("client", service.getByCPF(cpf));
         }else{
             if(service.addAddress(address,cpf)){
-                mv = new ModelAndView("uploadDocument");
-                mv.setStatus(HttpStatus.OK);
+                mv = redirectRegistrationSteps(service.getByCPF(cpf));
             }else{
                 result.addError(new FieldError("Endereço", "Cliente", "* Cliente não encontrado"));
                 mv = errorHandling(result, "addressRegister");
+                mv.addObject("client", service.getByCPF(cpf));
             }
         }
 
-        mv.addObject("client", service.getByCPF(cpf));
         return mv;
     }
 
@@ -132,7 +134,17 @@ public class ClientController {
         return "/image/cpf."+extension;
     }
 
-    private String getUrlAddress(String cpf){
-        return "/cliente/endereco/"+cpf;
+    private ModelAndView redirectRegistrationSteps(Client client){
+        final ModelAndView mv = new ModelAndView("registrationSteps");
+        mv.addObject("client", client);
+        mv.setStatus(HttpStatus.OK);
+        return  mv;
     }
+
+//    private ModelAndView redirectRegistrationSteps(Client client){
+//        final ModelAndView mv = new ModelAndView("registrationSteps");
+//        mv.addObject("client", client);
+//        mv.setStatus(HttpStatus.OK);
+//        return  mv;
+//    }
 }
