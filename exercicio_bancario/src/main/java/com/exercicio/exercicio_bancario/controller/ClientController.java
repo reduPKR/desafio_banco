@@ -85,6 +85,6 @@ public class ClientController {
     }
 
     private String getImagePath(String extension){
-        return service.getBasePathImage()+"\\cpf."+extension;
+        return "/image/cpf."+extension;
     }
 }

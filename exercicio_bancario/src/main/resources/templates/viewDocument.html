@@ -12,7 +12,7 @@
                 Foto digitalizada para o CPF: <label th:text="*{client.document.cpf}"></label>
             </p>
             <br>
-            <img th:src="${image}">
+            <img th:src="*{image}" width="600" height="360">
         </div>
     </body>
 </html>

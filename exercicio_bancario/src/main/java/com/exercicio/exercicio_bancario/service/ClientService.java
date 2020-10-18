@@ -116,6 +116,6 @@ public class ClientService {
     }
 
     public String getBasePathImage(){
-        return System.getProperty("user.dir")+"\\src\\main\\resources\\static\\document";
+        return System.getProperty("user.dir")+"\\src\\main\\resources\\static\\image";
     }
 }
