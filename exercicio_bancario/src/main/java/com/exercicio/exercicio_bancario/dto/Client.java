@@ -24,6 +24,7 @@ public class Client {
     private String birthday;
     @Valid
     private DocumentCPF document;
+    private Address address;
 
     public Client(String name, String lastName, String email, String birthday, String cpf) {
         this.name = name;
