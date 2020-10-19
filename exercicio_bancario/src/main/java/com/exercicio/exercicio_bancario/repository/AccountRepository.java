@@ -1,7 +1,6 @@
 package com.exercicio.exercicio_bancario.repository;
 
 import com.exercicio.exercicio_bancario.dto.Account;
-import com.exercicio.exercicio_bancario.dto.Client;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -41,5 +40,9 @@ public class AccountRepository {
             value = value + Integer.toString(gerador.nextInt(10));
         }
         return value;
+    }
+
+    public Optional<Account> search(String agency, String account) {
+        return listAccounts.stream().filter(item -> item.getAgency().equals(agency) && item.getAccount().equals(account)).findFirst();
     }
 }

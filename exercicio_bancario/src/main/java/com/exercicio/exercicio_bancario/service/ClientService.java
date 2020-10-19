@@ -5,6 +5,7 @@ import com.exercicio.exercicio_bancario.dto.Address;
 import com.exercicio.exercicio_bancario.dto.Client;
 import com.exercicio.exercicio_bancario.repository.AccountRepository;
 import com.exercicio.exercicio_bancario.repository.ClientRepository;
+import com.sun.org.apache.bcel.internal.generic.ARETURN;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -134,5 +135,13 @@ public class ClientService {
 
     public Account createAccount() {
         return repositoryAccount.generateAccount();
+    }
+
+    public Account search(String agency, String account) {
+        Optional<Account> response = repositoryAccount.search(agency, account);
+        if(response.isPresent()){
+            return response.get();
+        }
+        return null;
     }
 }

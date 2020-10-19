@@ -5,9 +5,9 @@
         <title>Nova conta</title>
     </head>
     <body>
-        <h1>Conta criada</h1>
-        <br>
         <div style="text-align: center">
+            <h1>Conta criada</h1>
+            <br>
             <div>
                 <h3>Dados pessoais</h3>
                 <strong>Nome:</strong>
@@ -32,5 +32,6 @@
                 <label th:text="*{client.account.balance}"></label>
             </div>
         </div>
+        <a th:href="@{/}">Home</a>
     </body>
 </html>

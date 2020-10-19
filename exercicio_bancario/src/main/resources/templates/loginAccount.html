@@ -8,7 +8,7 @@
     <div style="text-align: center">
         <h1>Acessar conta</h1>
         <br><br>
-        <form th:action="@{/conta/login}" th:object="${account}" method="post">
+        <form th:action="@{/conta/acessar}" th:object="${account}" method="post">
             <input type="text" name="agency"  onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="4" th:placeholder="Agencia"/>
             <input type="text" name="account" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="8" th:placeholder="Conta"/>
             <button type="submit">Confirmar</button>

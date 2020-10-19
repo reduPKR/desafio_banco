@@ -23,12 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e23f0cb-12ff-406d-b6ca-c6c25dc4dbad" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/controller/AccountController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/resources/templates/loginAccount.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/dto/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/dto/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/controller/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/repository/AccountRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/repository/AccountRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/service/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/resources/templates/accountInformation.html" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/resources/templates/accountInformation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/resources/templates/loginAccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/resources/templates/loginAccount.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,22 +106,22 @@
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="525" y="146" key="#com.intellij.ide.util.MemberChooser/0.0.1440.860@0.0.1440.860" timestamp="1603077437339" />
-    <state width="1397" height="250" key="GridCell.Tab.0.bottom" timestamp="1603078795074">
+    <state width="1397" height="249" key="GridCell.Tab.0.bottom" timestamp="1603080494276">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="250" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603078795074" />
-    <state width="1397" height="250" key="GridCell.Tab.0.center" timestamp="1603078795074">
+    <state width="1397" height="249" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603080494276" />
+    <state width="1397" height="249" key="GridCell.Tab.0.center" timestamp="1603080494276">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="250" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1603078795074" />
-    <state width="1397" height="250" key="GridCell.Tab.0.left" timestamp="1603078795074">
+    <state width="1397" height="249" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1603080494276" />
+    <state width="1397" height="249" key="GridCell.Tab.0.left" timestamp="1603080494276">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="250" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1603078795074" />
-    <state width="1397" height="250" key="GridCell.Tab.0.right" timestamp="1603078795074">
+    <state width="1397" height="249" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1603080494276" />
+    <state width="1397" height="249" key="GridCell.Tab.0.right" timestamp="1603080494276">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="250" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1603078795074" />
+    <state width="1397" height="249" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1603080494276" />
     <state width="1397" height="276" key="GridCell.Tab.1.bottom" timestamp="1602916690247">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
