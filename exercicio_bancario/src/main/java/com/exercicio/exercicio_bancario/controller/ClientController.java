@@ -133,12 +133,14 @@ public class ClientController {
         return mv;
     }
 
-//    public ModelAndView getViewInformationPage(){
-//        mv = new ModelAndView("viewInformation");
-//        mv.addObject("client",client);
-//        mv.addObject("image",getImagePath(client.getDocument().getExtension()));
-//        mv.setStatus(HttpStatus.OK);
-//    }
+    @GetMapping("/informacoes")
+    public ModelAndView getViewInformationPage(@ModelAttribute DocumentCPF document){
+        final ModelAndView mv = new ModelAndView("viewInformation");
+        Client client = service.getByCPF(document.getCpf());
+        mv.addObject("client", client);
+        mv.addObject("image",getImagePath(client.getDocument().getExtension()));
+        return mv;
+    }
 
     private String getImagePath(String extension){
         return "/image/cpf."+extension;

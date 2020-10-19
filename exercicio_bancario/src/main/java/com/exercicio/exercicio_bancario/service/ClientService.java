@@ -69,16 +69,16 @@ public class ClientService {
         if(client.isPresent()){
             byte[] bytes = image.getBytes();
             client.get().getDocument().setImage(bytes);
-            setExtension(client.get(), image);
+            client.get().getDocument().setExtension(getExtension(image));
             return client.get();
         }
         return null;
     }
 
-    private void setExtension(Client client, MultipartFile image){
+    private String getExtension(MultipartFile image){
         String imageAux = image.getOriginalFilename();
         String[] extension = imageAux.split("\\.");
-        client.getDocument().setExtension(extension[(extension.length-1)]);
+        return extension[(extension.length-1)];
     }
 
     public void mountImage(byte[] bytes, String extension){
