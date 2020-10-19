@@ -1,5 +1,6 @@
 package com.exercicio.exercicio_bancario.controller;
 
+import com.exercicio.exercicio_bancario.dto.Account;
 import com.exercicio.exercicio_bancario.dto.Address;
 import com.exercicio.exercicio_bancario.dto.Client;
 import com.exercicio.exercicio_bancario.dto.DocumentCPF;
@@ -173,6 +174,17 @@ public class ClientController {
 
     private ModelAndView redirectRegistrationSteps(Client client){
         final ModelAndView mv = new ModelAndView("registrationSteps");
+        mv.addObject("client", client);
+        mv.setStatus(HttpStatus.OK);
+        return  mv;
+    }
+
+    @GetMapping("/finalizar")
+    private ModelAndView getCreateAccount(@ModelAttribute DocumentCPF document){
+        Client client = service.getByCPF(document.getCpf());
+        client.setAccount(service.createAccount());
+
+        final ModelAndView mv = new ModelAndView("accountInformation");
         mv.addObject("client", client);
         mv.setStatus(HttpStatus.OK);
         return  mv;

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Nova conta</title>
+    </head>
+    <body>
+        <h1>Conta criada</h1>
+        <br>
+        <div style="text-align: center">
+            <div>
+                <h3>Dados pessoais</h3>
+                <strong>Nome:</strong>
+                <label th:text="*{client.name}"></label>
+                <strong>Sobenome:</strong>
+                <label th:text="*{client.lastName}"></label>
+                <br>
+                <strong>E-mail:</strong>
+                <label th:text="*{client.email}"></label>
+            </div>
+            <div>
+                <h3>Dados da conta</h3>
+                <strong>Agencia:</strong>
+                <label th:text="*{client.account.agency}"></label>
+                <strong>Conta:</strong>
+                <label th:text="*{client.account.account}"></label>
+                <br>
+                <strong>Codigo do banco:</strong>
+                <label th:text="*{client.account.bankCode}"></label>
+                <br>
+                <strong>Saldo:</strong>
+                <label th:text="*{client.account.balance}"></label>
+            </div>
+        </div>
+    </body>
+</html>

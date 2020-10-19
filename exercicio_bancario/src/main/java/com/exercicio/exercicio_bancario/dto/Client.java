@@ -1,8 +1,6 @@
 package com.exercicio.exercicio_bancario.dto;
 
-import com.exercicio.exercicio_bancario.exceptions.DateException;
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
@@ -25,6 +23,7 @@ public class Client {
     @Valid
     private DocumentCPF document = null;
     private Address address = null;
+    private Account account;
 
     public Client(String name, String lastName, String email, String birthday, String cpf) {
         this.name = name;
@@ -131,5 +130,13 @@ public class Client {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }

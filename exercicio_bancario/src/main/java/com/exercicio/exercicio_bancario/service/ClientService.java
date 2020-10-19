@@ -1,8 +1,9 @@
 package com.exercicio.exercicio_bancario.service;
 
+import com.exercicio.exercicio_bancario.dto.Account;
 import com.exercicio.exercicio_bancario.dto.Address;
 import com.exercicio.exercicio_bancario.dto.Client;
-import com.exercicio.exercicio_bancario.exceptions.ClientException;
+import com.exercicio.exercicio_bancario.repository.AccountRepository;
 import com.exercicio.exercicio_bancario.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,22 +20,24 @@ import java.util.Optional;
 @Service
 public class ClientService {
     @Autowired
-    private ClientRepository repository;
+    private ClientRepository repositoryClient;
+    @Autowired
+    private AccountRepository repositoryAccount;
 
     public ArrayList<Client> getAll(){
-        return repository.getAll();
+        return repositoryClient.getAll();
     }
 
     public Client getById(int id){
-        final Optional<Client> client = repository.getById(id);
+        final Optional<Client> client = repositoryClient.getById(id);
         if(client.isPresent()){
             return client.get();
         }
-        throw new ClientException();
+        return null;
     }
 
     public Client getByCPF(String cpf){
-        final Optional<Client> client = repository.getByCPF(cpf);
+        final Optional<Client> client = repositoryClient.getByCPF(cpf);
         if(client.isPresent()){
             return client.get();
         }
@@ -43,13 +46,13 @@ public class ClientService {
 
     public Client add(Client client){
         if(uniqueCPF(client.getDocument().getCpf())){
-            return repository.add(client);
+            return repositoryClient.add(client);
         }
         return null;
     }
 
     private Boolean uniqueCPF(String cpf){
-        Optional<Client> client = repository.getByCPF(cpf);
+        Optional<Client> client = repositoryClient.getByCPF(cpf);
         if(client.isPresent())
             return false;
         return true;
@@ -65,7 +68,7 @@ public class ClientService {
     }
 
     private Client trySaveImage(MultipartFile image, String cpf) throws IOException {
-        Optional<Client> client = repository.getByCPF(cpf);
+        Optional<Client> client = repositoryClient.getByCPF(cpf);
         if(client.isPresent()){
             byte[] bytes = image.getBytes();
             client.get().getDocument().setImage(bytes);
@@ -121,11 +124,15 @@ public class ClientService {
     }
 
     public boolean addAddress(Address address, String cpf) {
-        Optional<Client> client = repository.getByCPF(cpf);
+        Optional<Client> client = repositoryClient.getByCPF(cpf);
         if(client.isPresent()){
             client.get().setAddress(address);
             return true;
         }
         return false;
+    }
+
+    public Account createAccount() {
+        return repositoryAccount.generateAccount();
     }
 }
