@@ -44,7 +44,7 @@ public class ClientController {
         }else{
             BindingResult result = new BeanPropertyBindingResult("Busca", "Cliente");
             result.addError(new FieldError("Client", "CPF", "* Nenhum um cliente encontrado com esse CPF"));
-            mv = errorHandling(result, "registrationControl");
+            mv = errorHandling(result, "registrationControl", HttpStatus.BAD_REQUEST);
         }
         return mv;
     }
@@ -53,22 +53,22 @@ public class ClientController {
     public ModelAndView create(@Valid @ModelAttribute Client client, BindingResult result){
         final ModelAndView mv;
         if(result.hasErrors()){
-            mv = errorHandling(result, "newClient");
+            mv = errorHandling(result, "newClient", HttpStatus.BAD_REQUEST);
         }else{
             if(service.add(client) != null){
                 mv = redirectRegistrationSteps(client);
             }else{
                 result.addError(new FieldError("Documento", "CPF", "* CPF já esta sendo utilizado"));
-                mv = errorHandling(result, "newClient");
+                mv = errorHandling(result, "newClient", HttpStatus.BAD_REQUEST);
             }
         }
         return mv;
     }
 
-    private ModelAndView errorHandling(BindingResult result, String page){
+    private ModelAndView errorHandling(BindingResult result, String page, HttpStatus status){
         final ModelAndView mv = new ModelAndView(page);
         ArrayList<String> errors = getErrors(result);
-        mv.setStatus(HttpStatus.BAD_REQUEST);
+        mv.setStatus(status);
         mv.addObject("errors", errors);
         return  mv;
     }
@@ -94,7 +94,7 @@ public class ClientController {
     public ModelAndView address(@Valid @ModelAttribute Address address, @PathVariable("cpf") String cpf, BindingResult result){
         final ModelAndView mv;
         if(result.hasErrors()){
-            mv = errorHandling(result, "addressRegister");
+            mv = errorHandling(result, "addressRegister", HttpStatus.BAD_REQUEST);
             mv.addObject("url", "/cliente/endereco/"+cpf);
             mv.addObject("client", service.getByCPF(cpf));
         }else{
@@ -102,7 +102,7 @@ public class ClientController {
                 mv = redirectRegistrationSteps(service.getByCPF(cpf));
             }else{
                 result.addError(new FieldError("Endereço", "Cliente", "* Cliente não encontrado"));
-                mv = errorHandling(result, "addressRegister");
+                mv = errorHandling(result, "addressRegister", HttpStatus.BAD_REQUEST);
                 mv.addObject("client", service.getByCPF(cpf));
             }
         }
@@ -119,17 +119,26 @@ public class ClientController {
 
     @PostMapping("/upload")
     public ModelAndView upload(@RequestParam("image") MultipartFile image, @RequestParam("cpf") String cpf){
-        Client client = service.saveImage(image, cpf);
         final ModelAndView mv;
-
-        if(client != null){
-            service.mountImage(client.getDocument().getImage(), client.getDocument().getExtension());
-            mv = redirectRegistrationSteps(client);
+        Client client = service.getByCPF(cpf);
+        if(client.getAddress() != null){
+            client = service.saveImage(image, cpf);
+            if(client != null){
+                service.mountImage(client.getDocument().getImage(), client.getDocument().getExtension());
+                mv = redirectRegistrationSteps(client);
+            }else{
+                BindingResult result = new BeanPropertyBindingResult("Documento", "Imagem");
+                result.addError(new FieldError("Documento", "CPF", "* CPF erro ao salvar a foto"));
+                mv = errorHandling(result, "uploadDocument", HttpStatus.BAD_REQUEST);
+                mv.addObject("client", service.getByCPF(cpf));
+            }
         }else{
             BindingResult result = new BeanPropertyBindingResult("Documento", "Imagem");
-            result.addError(new FieldError("Documento", "CPF", "* CPF erro ao salvar a foto"));
-            mv = errorHandling(result, "uploadDocument");
+            result.addError(new FieldError("Documento", "Imagem", "* Para carregar um documento é nescessario ter o endereço cadastrado."));
+            mv = errorHandling(result, "uploadDocument", HttpStatus.UNPROCESSABLE_ENTITY);
+            mv.addObject("client", service.getByCPF(cpf));
         }
+
         return mv;
     }
 

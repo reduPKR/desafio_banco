@@ -23,8 +23,8 @@ public class Client {
     private int age;
     private String birthday;
     @Valid
-    private DocumentCPF document;
-    private Address address;
+    private DocumentCPF document = null;
+    private Address address = null;
 
     public Client(String name, String lastName, String email, String birthday, String cpf) {
         this.name = name;
