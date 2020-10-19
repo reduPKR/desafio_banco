@@ -110,6 +110,13 @@ public class ClientController {
         return mv;
     }
 
+    @GetMapping("/upload")
+    public ModelAndView getUploadDocumentPage(@ModelAttribute DocumentCPF document){
+        ModelAndView mv = new ModelAndView("uploadDocument");
+        mv.addObject("client", service.getByCPF(document.getCpf()));
+        return  mv;
+    }
+
     @PostMapping("/upload")
     public ModelAndView upload(@RequestParam("image") MultipartFile image, @RequestParam("cpf") String cpf){
         Client client = service.saveImage(image, cpf);
@@ -117,11 +124,7 @@ public class ClientController {
 
         if(client != null){
             service.mountImage(client.getDocument().getImage(), client.getDocument().getExtension());
-
-            mv = new ModelAndView("viewInformation");
-            mv.addObject("client",client);
-            mv.addObject("image",getImagePath(client.getDocument().getExtension()));
-            mv.setStatus(HttpStatus.OK);
+            mv = redirectRegistrationSteps(client);
         }else{
             BindingResult result = new BeanPropertyBindingResult("Documento", "Imagem");
             result.addError(new FieldError("Documento", "CPF", "* CPF erro ao salvar a foto"));
@@ -129,6 +132,13 @@ public class ClientController {
         }
         return mv;
     }
+
+//    public ModelAndView getViewInformationPage(){
+//        mv = new ModelAndView("viewInformation");
+//        mv.addObject("client",client);
+//        mv.addObject("image",getImagePath(client.getDocument().getExtension()));
+//        mv.setStatus(HttpStatus.OK);
+//    }
 
     private String getImagePath(String extension){
         return "/image/cpf."+extension;
@@ -140,11 +150,4 @@ public class ClientController {
         mv.setStatus(HttpStatus.OK);
         return  mv;
     }
-
-//    private ModelAndView redirectRegistrationSteps(Client client){
-//        final ModelAndView mv = new ModelAndView("registrationSteps");
-//        mv.addObject("client", client);
-//        mv.setStatus(HttpStatus.OK);
-//        return  mv;
-//    }
 }

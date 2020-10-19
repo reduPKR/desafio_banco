@@ -21,7 +21,10 @@
             <button type="submit">Cadastrar endereço</button>
         </form>
         <br>
-        <a th:href="*{urlAddress}">Upload foto do CPF</a>
+        <form  th:action="@{/cliente/upload}" @object="document" method="get">
+            <input type="text" name="cpf" th:value="${client.document.cpf}" hidden>
+            <button type="submit">Upload foto do CPF</button>
+        </form>
         <br>
         <a th:href="*{urlAddress}">Visualizar dados cadastrados</a>
         <br>
