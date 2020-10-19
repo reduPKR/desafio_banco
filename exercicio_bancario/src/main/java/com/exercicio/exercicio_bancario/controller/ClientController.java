@@ -24,7 +24,8 @@ import java.util.Map;
 @Controller
 @RequestMapping("cliente")
 public class ClientController {
-    @Autowired ClientService service;
+    @Autowired
+    ClientService service;
 
     @GetMapping("")
     public ModelAndView getRegisterControl(){

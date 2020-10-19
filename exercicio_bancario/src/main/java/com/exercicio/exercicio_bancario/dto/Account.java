@@ -6,12 +6,14 @@ public class Account {
     private String account;
     private String bankCode;
     private Double balance;
+    private String password;
 
     public Account(String agency, String account, String bankCode, Double balance) {
         this.agency = agency;
         this.account = account;
         this.bankCode = bankCode;
         this.balance = balance;
+        password = null;
     }
 
     public int getId() {
@@ -52,5 +54,13 @@ public class Account {
 
     public void setBalance(Double balance) {
         this.balance = balance;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
