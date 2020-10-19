@@ -7,7 +7,7 @@ public class DocumentCPF {
     @NotBlank(message = "* CPF não pode estar vazio")
     @CPF(message = "* CPF inválido")
     private String cpf;
-    private byte[] image;
+    private byte[] image = null;
     private String extension;
 
     public DocumentCPF(String cpf) {

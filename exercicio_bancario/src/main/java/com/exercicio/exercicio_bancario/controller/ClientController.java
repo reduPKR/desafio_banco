@@ -144,11 +144,27 @@ public class ClientController {
 
     @GetMapping("/informacoes")
     public ModelAndView getViewInformationPage(@ModelAttribute DocumentCPF document){
-        final ModelAndView mv = new ModelAndView("viewInformation");
+        final ModelAndView mv;
         Client client = service.getByCPF(document.getCpf());
+        if(validateViewInformation(client)){
+            mv = new ModelAndView("viewInformation");
+            mv.addObject("image",getImagePath(client.getDocument().getExtension()));
+        }else{
+            BindingResult result = new BeanPropertyBindingResult("Informacoes", "Client");
+
+            if(client.getAddress() == null)
+                result.addError(new FieldError("Address", "address", "* Para visualizar as informações é nescessario ter um endereco cadastrado."));
+            if(client.getDocument().getImage() == null)
+                result.addError(new FieldError("Document", "image", "* Para visualizar as informações é nescessario ter uma foto do documento cadastrado."));
+            mv = errorHandling(result, "registrationSteps", HttpStatus.BAD_REQUEST);
+        }
+
         mv.addObject("client", client);
-        mv.addObject("image",getImagePath(client.getDocument().getExtension()));
         return mv;
+    }
+
+    private Boolean validateViewInformation(Client client){
+        return client.getAddress() != null && client.getDocument().getImage() != null;
     }
 
     private String getImagePath(String extension){
