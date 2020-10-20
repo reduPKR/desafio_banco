@@ -45,6 +45,14 @@ public class ClientService {
         return null;
     }
 
+    public Client getByAccount(Account account){
+        final Optional<Client> client = repositoryClient.getByAccount(account);
+        if(client.isPresent()){
+            return client.get();
+        }
+        return null;
+    }
+
     public Client add(Client client){
         if(uniqueCPF(client.getDocument().getCpf())){
             return repositoryClient.add(client);

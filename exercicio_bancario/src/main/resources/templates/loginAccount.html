@@ -9,6 +9,9 @@
         <h1>Acessar conta</h1>
         <br><br>
         <form th:action="@{/conta/acessar}" th:object="${account}" method="post">
+            <div th:each="erro: ${errors}">
+                <span style="color: red;" th:text="${erro}" ></span>
+            </div>
             <input type="text" name="agency"  onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="4" th:placeholder="Agencia"/>
             <input type="text" name="account" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="8" th:placeholder="Conta"/>
             <button type="submit">Confirmar</button>

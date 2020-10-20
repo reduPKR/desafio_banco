@@ -23,7 +23,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("cliente")
-public class ClientController {
+public class ClientController extends AbstractController {
     @Autowired
     ClientService service;
 
@@ -65,23 +65,6 @@ public class ClientController {
             }
         }
         return mv;
-    }
-
-    private ModelAndView errorHandling(BindingResult result, String page, HttpStatus status){
-        final ModelAndView mv = new ModelAndView(page);
-        ArrayList<String> errors = getErrors(result);
-        mv.setStatus(status);
-        mv.addObject("errors", errors);
-        return  mv;
-    }
-
-    private ArrayList<String> getErrors(BindingResult result){
-        ArrayList<String> errors = new ArrayList();
-
-        for(ObjectError error : result.getAllErrors()){
-            errors.add(error.getDefaultMessage());
-        }
-        return errors;
     }
 
     @GetMapping("/endereco")
