@@ -10,10 +10,7 @@ import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -66,4 +63,19 @@ public class AccountController extends AbstractController{
         return !account.getAgency().equals("") && !account.getAccount().equals("");
     }
 
+    @PostMapping("/primeiro/acesso")
+    public ModelAndView getFirstAccess(@PathVariable("cpf") String cpf,
+                                       @PathVariable("email") String email,
+                                       @PathVariable("agency") String agency,
+                                       @PathVariable("account") String account){
+        final ModelAndView mv = new ModelAndView("home");
+        System.out.println(cpf);
+        System.out.println(email);
+        System.out.println(agency);
+        System.out.println(account);
+        Client client = service.getByEmailAndCPF(email,cpf);
+        System.out.println(client.getName());
+
+        return mv;
+    }
 }

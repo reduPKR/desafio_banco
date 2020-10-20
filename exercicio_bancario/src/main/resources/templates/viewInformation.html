@@ -9,6 +9,12 @@
             <h1>Visualização</h1>
             <br>
             <div>
+                <form  th:action="@{/cliente/finalizar}" @object="document" method="get">
+                    <input type="text" name="cpf" th:value="${client.document.cpf}" hidden>
+                    <button type="submit">Aceitar proposta</button>
+                </form>
+            </div>
+            <div>
                 <h3>Dados pessoais</h3>
                 <strong>Nome:</strong>
                 <label th:text="*{client.name}"></label>
@@ -49,12 +55,6 @@
                 <label th:text="*{client.document.cpf}"></label>
                 <br><br>
                 <img th:src="*{image}" width="400" height="237">
-            </div>
-            <div>
-                <form  th:action="@{/cliente/finalizar}" @object="document" method="get">
-                    <input type="text" name="cpf" th:value="${client.document.cpf}" hidden>
-                    <button type="submit">Aceitar proposta</button>
-                </form>
             </div>
         </div>
     </body>

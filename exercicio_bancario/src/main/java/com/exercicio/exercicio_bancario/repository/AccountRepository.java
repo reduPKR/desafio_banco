@@ -1,6 +1,7 @@
 package com.exercicio.exercicio_bancario.repository;
 
 import com.exercicio.exercicio_bancario.dto.Account;
+import com.exercicio.exercicio_bancario.dto.Client;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

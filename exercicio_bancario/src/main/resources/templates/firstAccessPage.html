@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <title>Primeiro acesso</title>
@@ -7,6 +7,25 @@
     <body>
         <div style="text-align: center">
             <h1>Pagina de primeiro acesso</h1>
+            <p>
+                Olá <label th:text="*{client.name}"></label> <label th:text="*{client.lastName}"></label>,
+                idendificamos que esse é o seu primeiro acesso, por conta disso precissamos cadastrar uma nova senha.
+                <br>
+                Para que a senha seja cadastrada é nescessario a confirmacao do e-mail e CPF vinaculados a conta:
+            </p>
+            <br>
+            <form th:action="@{/conta/primeiro/acesso}" method="post">
+                <div th:each="erro: ${errors}">
+                    <span style="color: red;" th:text="${erro}" ></span>
+                </div>
+                <input type="text" name="agency" th:value="${client.account.agency}" hidden>
+                <input type="text" name="account" th:value="${client.account.account}" hidden>
+                <input type="email" name="email" th:placeholder="E-mail"/>
+                <br><br>
+                <input type="text" name="cpf" onKeyPress="maskCPF(cpf);" maxlength="14" th:placeholder="CPF"/>
+                <br><br>
+                <button type="submit">Confirmar</button>
+            </form>
         </div>
     </body>
 </html>

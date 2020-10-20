@@ -2,7 +2,6 @@ package com.exercicio.exercicio_bancario.repository;
 
 import com.exercicio.exercicio_bancario.dto.Account;
 import com.exercicio.exercicio_bancario.dto.Client;
-import com.exercicio.exercicio_bancario.dto.DocumentCPF;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -28,6 +27,11 @@ public class ClientRepository {
 
     public Optional<Client> getByCPF(String cpf){
         return listClients.stream().filter(item -> item.getDocument().getCpf().equals(cpf)).findFirst();
+    }
+
+    public Optional<Client> getByEmailAndCPF(String email, String cpf) {
+        return listClients.stream().filter(item -> item.getEmail().equals(email) &&
+                item.getDocument().getCpf().equals(cpf)).findFirst();
     }
 
     public Optional<Client> getByAccount(Account account) {
