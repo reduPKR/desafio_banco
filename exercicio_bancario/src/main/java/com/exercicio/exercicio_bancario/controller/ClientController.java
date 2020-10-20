@@ -1,11 +1,9 @@
 package com.exercicio.exercicio_bancario.controller;
 
-import com.exercicio.exercicio_bancario.dto.Account;
 import com.exercicio.exercicio_bancario.dto.Address;
 import com.exercicio.exercicio_bancario.dto.Client;
 import com.exercicio.exercicio_bancario.dto.DocumentCPF;
 import com.exercicio.exercicio_bancario.service.ClientService;
-import org.springframework.beans.PropertyEditorRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -15,11 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.beans.PropertyEditor;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("cliente")
@@ -69,18 +62,21 @@ public class ClientController extends AbstractController {
 
     @GetMapping("/endereco")
     public ModelAndView getAddressPage(@ModelAttribute DocumentCPF document){
+        System.out.println("get");
         ModelAndView mv = new ModelAndView("addressRegister");
         mv.addObject("client", service.getByCPF(document.getCpf()));
-        mv.addObject("url", "/cliente/endereco/"+document.getCpf());
         return  mv;
     }
 
-    @PostMapping("/endereco/{cpf}")
-    public ModelAndView address(@Valid @ModelAttribute Address address, @PathVariable("cpf") String cpf, BindingResult result){
+    @PostMapping("/endereco")
+    public ModelAndView address(@Valid @ModelAttribute("address") Address address, BindingResult result){
+        //Gambiarra para evitar de ficar passando parametro na url
+        String cpf = address.getId();
+        address.setId(null);
+
         final ModelAndView mv;
         if(result.hasErrors()){
             mv = errorHandling(result, "addressRegister", HttpStatus.BAD_REQUEST);
-            mv.addObject("url", "/cliente/endereco/"+cpf);
             mv.addObject("client", service.getByCPF(cpf));
         }else{
             if(service.addAddress(address,cpf)){

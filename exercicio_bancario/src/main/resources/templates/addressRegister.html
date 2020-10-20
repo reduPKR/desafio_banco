@@ -16,10 +16,11 @@
             <strong>CPF:</strong>
             <label th:text="*{client.document.cpf}"></label>
             <br><br>
-            <form th:action="${url}" th:object="${address}" method="post">
+            <form th:action="@{/cliente/endereco}" th:object="${address}" method="post">
                 <div th:each="erro: ${errors}">
                     <span style="color: red;" th:text="${erro}" ></span>
                 </div>
+                <input type="text" name="id" th:value="${client.document.cpf}" hidden>
                 <input type="text" name="zip" onKeyPress="maskZIP(zip);" maxlength="14"  th:placeholder="CEP"/>
                 <br><br>
                 <input type="text" name="state" th:placeholder="UF"/>
