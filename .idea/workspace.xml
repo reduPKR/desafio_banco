@@ -23,11 +23,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e23f0cb-12ff-406d-b6ca-c6c25dc4dbad" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/modelsForForm/FirstAccess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/modelsForForm/Password.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/resources/templates/newPassword.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/controller/AccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/dto/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/dto/Address.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/java/com/exercicio/exercicio_bancario/service/ClientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/resources/templates/addressRegister.html" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/resources/templates/addressRegister.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercicio_bancario/src/main/resources/templates/firstAccessPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/exercicio_bancario/src/main/resources/templates/firstAccessPage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,26 +104,26 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="525" y="146" key="#com.intellij.ide.util.MemberChooser" timestamp="1603172551934">
+    <state x="525" y="146" key="#com.intellij.ide.util.MemberChooser" timestamp="1603210067481">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="525" y="146" key="#com.intellij.ide.util.MemberChooser/0.0.1440.860@0.0.1440.860" timestamp="1603172551934" />
-    <state width="1397" height="249" key="GridCell.Tab.0.bottom" timestamp="1603171877904">
+    <state x="525" y="146" key="#com.intellij.ide.util.MemberChooser/0.0.1440.860@0.0.1440.860" timestamp="1603210067481" />
+    <state width="1397" height="205" key="GridCell.Tab.0.bottom" timestamp="1603212513536">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="249" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603171877904" />
-    <state width="1397" height="249" key="GridCell.Tab.0.center" timestamp="1603171877903">
+    <state width="1397" height="205" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603212513536" />
+    <state width="1397" height="205" key="GridCell.Tab.0.center" timestamp="1603212513536">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="249" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1603171877903" />
-    <state width="1397" height="249" key="GridCell.Tab.0.left" timestamp="1603171877903">
+    <state width="1397" height="205" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1603212513536" />
+    <state width="1397" height="205" key="GridCell.Tab.0.left" timestamp="1603212513535">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="249" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1603171877903" />
-    <state width="1397" height="249" key="GridCell.Tab.0.right" timestamp="1603171877903">
+    <state width="1397" height="205" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1603212513535" />
+    <state width="1397" height="205" key="GridCell.Tab.0.right" timestamp="1603212513536">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="249" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1603171877903" />
+    <state width="1397" height="205" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1603212513536" />
     <state width="1397" height="276" key="GridCell.Tab.1.bottom" timestamp="1602916690247">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
@@ -145,9 +148,9 @@
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="427" y="29" width="585" height="801" key="find.popup/0.0.1440.860@0.0.1440.860" timestamp="1603045809368" />
-    <state x="376" y="195" width="672" height="677" key="run.anything.popup" timestamp="1603163243969">
+    <state x="376" y="195" width="672" height="677" key="run.anything.popup" timestamp="1603210494207">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="376" y="195" width="672" height="677" key="run.anything.popup/0.0.1440.860@0.0.1440.860" timestamp="1603163243969" />
+    <state x="376" y="195" width="672" height="677" key="run.anything.popup/0.0.1440.860@0.0.1440.860" timestamp="1603210494207" />
   </component>
 </project>

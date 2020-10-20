@@ -14,7 +14,7 @@
                 Para que a senha seja cadastrada é nescessario a confirmacao do e-mail e CPF vinaculados a conta:
             </p>
             <br>
-            <form th:action="@{/conta/primeiro/acesso}" method="post">
+            <form th:action="@{/conta/primeiro/acesso}" th:object="${firstAccess}" method="post">
                 <div th:each="erro: ${errors}">
                     <span style="color: red;" th:text="${erro}" ></span>
                 </div>

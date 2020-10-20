@@ -161,4 +161,15 @@ public class ClientService {
         return null;
     }
 
+    public Boolean setPassword(String cpf, String password) {
+        Optional<Client> client = repositoryClient.getByCPF(cpf);
+        if(client.isPresent()){
+            client.get().getAccount().setPassword(password);
+            Optional<Account> account = repositoryAccount.search(client.get().getAccount().getAgency(),client.get().getAccount().getAccount());
+            if(account.isPresent()){
+                account.get().setPassword(password);
+            }
+        }
+        return false;
+    }
 }

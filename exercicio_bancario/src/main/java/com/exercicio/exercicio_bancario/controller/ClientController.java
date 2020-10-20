@@ -62,7 +62,6 @@ public class ClientController extends AbstractController {
 
     @GetMapping("/endereco")
     public ModelAndView getAddressPage(@ModelAttribute DocumentCPF document){
-        System.out.println("get");
         ModelAndView mv = new ModelAndView("addressRegister");
         mv.addObject("client", service.getByCPF(document.getCpf()));
         return  mv;
